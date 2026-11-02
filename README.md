@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/pwa-icon-512.png" alt="Logo do OTAKU LEVEL" width="176">
+  <img src="assets/readme-logo-bordered.png" alt="Logo do OTAKU LEVEL com borda dourada e contorno escuro" width="176">
 </p>
 
 <h1 align="center">OTAKU LEVEL</h1>
