@@ -682,7 +682,7 @@ body.app .ach p { margin: 2px 0 4px; color: var(--app-muted); font-size: .9rem; 
 body.app .ach small { color: var(--app-muted); }
 body.app .ach.locked {
   --rc: #85858f;
-  opacity: .58;
+  opacity: .50;
   filter: grayscale(1);
 }
 body.app .r-comum { --rc: #aaa8d8; }
