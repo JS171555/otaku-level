@@ -145,7 +145,7 @@ body { min-height: 100vh; min-height: 100dvh; }
   cursor: pointer;
   transition: background .18s ease, border-color .18s ease, transform .18s ease;
 }
-.google-btn i { color: #4285f4; font-size: 1.05rem; }
+.google-btn .google-logo { display: block; width: 24px; height: 25px; flex: none; object-fit: contain; }
 .google-btn:hover:not(:disabled) { border-color: var(--gold); background: #22204f; }
 .google-btn:active:not(:disabled) { transform: scale(.98); }
 .google-btn:disabled { opacity: .7; cursor: wait; }
