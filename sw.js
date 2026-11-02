@@ -1,4 +1,4 @@
-const CACHE_NAME = 'otaku-level-shell-v4';
+const CACHE_NAME = 'otaku-level-shell-v5';
 const APP_SHELL = [
   'index.html',
   'reset.html',
