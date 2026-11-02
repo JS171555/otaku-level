@@ -1056,3 +1056,35 @@ body.app .media-btns .ghost:focus-visible {
 @media (max-width: 360px) {
   body.app .media-btns { grid-template-columns: 1fr; }
 }
+
+
+/* Polimento mobile compatível com a navegação multipágina atual. */
+body.app {
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+}
+body.app main {
+  animation: app-content-enter 220ms cubic-bezier(.16, 1, .3, 1) both;
+}
+@keyframes app-content-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+body.app :is(button, .out, .tabs button, .search-fab, .bell):not(:disabled):active {
+  transform: scale(.96);
+}
+body.app nav#nav a,
+body.app nav#nav .out {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+body.app .tabs {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+body.app .tabs > * { scroll-snap-align: start; }
+@media (prefers-reduced-motion: reduce) {
+  body.app main { animation: none; }
+  body.app :is(button, .out, .tabs button, .search-fab, .bell):not(:disabled):active { transform: none; }
+}
