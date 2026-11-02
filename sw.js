@@ -1,4 +1,4 @@
-const CACHE_NAME = 'otaku-level-shell-v1';
+const CACHE_NAME = 'otaku-level-shell-v2';
 const APP_SHELL = [
   'index.html',
   'reset.html',
@@ -40,6 +40,7 @@ const APP_SHELL = [
   'js/supabase.js',
   'js/ui.js',
   'assets/favicon-32.png',
+  'assets/otaku-level-logo-transparent.png',
   'assets/apple-touch-icon.png',
   'assets/pwa-icon-192.png',
   'assets/pwa-icon-512.png',

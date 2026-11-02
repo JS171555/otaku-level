@@ -79,5 +79,5 @@ select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 
 /* Identidade visual compartilhada nas telas públicas. */
 .brand-lockup{display:flex;align-items:center;gap:12px;margin-bottom:14px;min-width:0}
-.brand-lockup img{display:block;width:48px;height:48px;flex:none;object-fit:cover;border-radius:14px;box-shadow:0 6px 18px #ff7aa833}
+.brand-lockup img{display:block;width:56px;height:56px;flex:none;object-fit:contain;border-radius:0;box-shadow:none;background:transparent}
 .brand-lockup h1{min-width:0;font-size:clamp(1.35rem,6vw,1.7rem);line-height:1.1;overflow-wrap:anywhere}
