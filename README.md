@@ -16,6 +16,15 @@ Acesse http://localhost:5500/.
 
 A raiz deste repositório contém o site estático. Pode ser publicado em GitHub Pages, Netlify, Cloudflare Pages ou qualquer hospedagem estática, usando a raiz como diretório de publicação.
 
+## Instalação como aplicativo (PWA)
+
+O site inclui um manifesto PWA, ícones Android/iOS e um service worker para disponibilizar a interface estática e os recursos já carregados quando a rede estiver indisponível. Publique em HTTPS para permitir o registro do service worker.
+
+- **Android:** abra o site no Chrome e escolha **Instalar app** ou **Adicionar à tela inicial** no menu do navegador.
+- **iPhone:** abra o site no Safari, toque em **Compartilhar** e escolha **Adicionar à Tela de Início**. O ícone exibido usa `assets/apple-touch-icon.png`.
+
+O início do app instalado abre `dashboard.html`; sem sessão válida, a autenticação existente redireciona para a tela de login.
+
 ## Configuração do Supabase
 
 Edite `js/config.js` com a URL do projeto e a chave pública `anon`/publishable do Supabase. Nunca coloque uma chave `service_role` ou secret key no frontend.

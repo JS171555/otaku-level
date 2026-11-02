@@ -1,14 +1,21 @@
 <!doctype html><html lang="pt-BR"><head><title>Notificações · OTAKU LEVEL</title>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="OTAKU LEVEL: suba de nível com cada anime que você acompanha.">
-<meta name="theme-color" content="#15143a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ff7aa8'/%3E%3Ctext x='16' y='23' font-size='18' text-anchor='middle' fill='%232a0f1c'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/app.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#15143a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Otaku Level">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head><body class="app"><div class="shell"><nav id="nav"></nav>
 <main class="notif-page"><header class="page-heading notif-head"><div><p class="eyebrow">Central</p><h1 class="pg">Notificações</h1>
 <p class="lead">Conquistas, níveis e desafios ficam guardados aqui.</p></div>
@@ -16,4 +23,4 @@
 <div class="tabs" id="filtro" role="group" aria-label="Filtrar"></div>
 <p class="mut" id="msg" role="status">Carregando…</p>
 <ul class="notif-list" id="lista"></ul>
-</main></div><div id="toasts" aria-live="polite"></div><script type="module" src="js/pages/notificacoes.js"></script></body></html>
+</main></div><div id="toasts" aria-live="polite"></div><script type="module" src="js/pages/notificacoes.js"></script><script type="module" src="js/pwa.js"></script></body></html>

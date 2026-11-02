@@ -475,17 +475,16 @@ body.app .toast.err { border-color: #ff6b81; }
     letter-spacing: .025em;
   }
   body.app nav#nav .logo::before {
-    display: grid;
+    display: none;
+  }
+  body.app nav#nav .logo-mark {
+    display: block;
     width: 36px;
     height: 36px;
     flex: none;
-    place-items: center;
     border-radius: 12px;
-    color: #2a0f1c;
-    background: linear-gradient(145deg, #ff9bbd, var(--app-pink));
+    object-fit: cover;
     box-shadow: 0 6px 18px #ff7aa833;
-    content: "✦";
-    font-size: 1.1rem;
   }
   body.app nav#nav a,
   body.app nav#nav .out {

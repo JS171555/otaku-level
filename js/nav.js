@@ -16,7 +16,7 @@ export function mountNav(active) {
   const out = h('button', { type: 'button', class: 'out' }, h('i', { class: 'fa-solid fa-right-from-bracket', 'aria-hidden': 'true' }), h('span', {}, 'Sair'));
   out.onclick = signOut;
   nav.append(
-    h('strong', { class: 'logo' }, 'OTAKU LEVEL'),
+    h('strong', { class: 'logo' }, h('img', { class: 'logo-mark', src: 'assets/pwa-icon-192.png', alt: '' }), h('span', {}, 'OTAKU LEVEL')),
     ...LINKS.map(([href, ic, t]) => h('a', { href, 'aria-current': href === active ? 'page' : false }, h('i', { class: 'fa-solid ' + ic, 'aria-hidden': 'true' }), h('span', {}, t))),
     out,
   );
