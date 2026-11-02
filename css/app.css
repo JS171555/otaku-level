@@ -894,7 +894,7 @@ body.app .home-avatar img {
 }
 
 body.app nav#nav a[aria-current="page"] {
-  width: auto;
+  width: 64px;
   min-width: 0;
   max-width: 100%;
   height: 56px;
