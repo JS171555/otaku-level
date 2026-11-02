@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/readme-logo-rounded.png" alt="Logo do OTAKU LEVEL com borda dourada, contorno escuro e cantos arredondados" width="176">
+  <img src="assets/readme-logo-rounded.png"
+       alt="Logo do OTAKU LEVEL com borda dourada, contorno escuro e cantos arredondados"
+       width="176"
+       style="border-radius: 20px;">
 </p>
 
 <h1 align="center">OTAKU LEVEL</h1>
