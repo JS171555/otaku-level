@@ -154,4 +154,4 @@ O repositório é estático. Publique a raiz do projeto em GitHub Pages, Netlify
 
 ## Marca
 
-A logo com fundo, usada no ícone instalado, está em `assets/pwa-icon-512.png`. A versão transparente para as telas de autenticação está em `assets/otaku-level-logo-transparent.png`. O símbolo Google dos botões OAuth, otimizado para carregamento rápido, está em `assets/google-logo.png`.
+Os ícones do site e do PWA usam a marca atualizada com fundo transparente. A imagem principal transparente está em `assets/otaku-level-logo-transparent.png`, compartilhada pelas telas de autenticação; as variantes de favicon, Apple Touch e PWA estão em `assets/`. O símbolo Google dos botões OAuth está em `assets/google-logo.png`.
