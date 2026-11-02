@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <title>Meu perfil · OTAKU LEVEL</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="OTAKU LEVEL: suba de nível com cada anime que você acompanha.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+</head>
+<body class="app">
+  <div class="shell">
+    <nav id="nav"></nav>
+    <main class="profile-page">
+      <header class="page-heading">
+        <p class="eyebrow">CONTA OTAKU LEVEL</p>
+        <h1 class="pg">Meu perfil</h1>
+        <p class="lead">Personalize como você aparece na comunidade.</p>
+      </header>
+      <section id="perfil" class="profile-panel" hidden aria-labelledby="nome">
+        <div class="who">
+          <div class="avatar" id="av" aria-hidden="true"></div>
+          <div class="who-copy">
+            <p class="eyebrow">SEU PERFIL</p>
+            <h2 id="nome"></h2>
+            <p id="user" class="mut"></p>
+          </div>
+        </div>
+        <div class="media-ctl">
+          <div class="banner-edit" id="banner"></div>
+          <div class="media-btns">
+            <label class="btn-file"><i class="fa-solid fa-image" aria-hidden="true"></i> Trocar avatar<input type="file" id="f-avatar" accept="image/jpeg,image/png,image/webp"></label>
+            <button type="button" class="ghost" id="rm-avatar">Remover avatar</button>
+            <label class="btn-file"><i class="fa-solid fa-panorama" aria-hidden="true"></i> Trocar banner<input type="file" id="f-banner" accept="image/jpeg,image/png,image/webp"></label>
+            <button type="button" class="ghost" id="rm-banner">Remover banner</button>
+          </div>
+        </div>
+        <form id="f-perfil" novalidate>
+          <label>Nome de exibição<input name="display_name" maxlength="40" required></label>
+          <small data-err="display_name" role="alert"></small>
+          <label>Bio<textarea name="bio" rows="4" maxlength="280" placeholder="Conte um pouco sobre seu lado otaku…"></textarea></label>
+          <small data-err="bio" role="alert"></small>
+          <fieldset class="privacy"><legend>Privacidade</legend>
+            <label class="check"><input type="checkbox" name="is_public"> Perfil visível para outros otakus</label>
+            <label class="check"><input type="checkbox" name="show_in_ranking"> Aparecer nos rankings</label>
+            <label class="check"><input type="checkbox" name="show_stats"> Mostrar nível e estatísticas no meu perfil</label>
+            <label class="check"><input type="checkbox" name="show_achievements"> Mostrar minhas conquistas no meu perfil</label>
+            <p class="mut">Perfil privado também sai dos rankings. As imagens ficam em endereços não listados, mas quem tiver o link direto consegue abri-las.</p>
+          </fieldset>
+          <button class="btn" type="submit"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Salvar perfil</button>
+        </form>
+        <p class="profile-links"><a href="perfil.html"><i class="fa-solid fa-eye" aria-hidden="true"></i> Ver meu perfil público</a></p>
+        <button class="ghost" id="sair" type="button"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Sair da conta</button>
+        <p class="profile-footnote"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Suas informações são protegidas pelas configurações de privacidade da conta.</p>
+      </section>
+    </main>
+  </div>
+  <div id="toasts" aria-live="polite"></div>
+  <script type="module" src="js/pages/app.js"></script>
+</body>
+</html>

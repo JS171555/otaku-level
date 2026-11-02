@@ -1,0 +1,19 @@
+<!doctype html><html lang="pt-BR"><head><title>Conquistas · OTAKU LEVEL</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="OTAKU LEVEL: suba de nível com cada anime que você acompanha.">
+<meta name="theme-color" content="#15143a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ff7aa8'/%3E%3Ctext x='16' y='23' font-size='18' text-anchor='middle' fill='%232a0f1c'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+</head><body class="app"><div class="shell"><nav id="nav"></nav>
+<main><h1 class="pg">Conquistas</h1>
+<section aria-labelledby="hn"><h2 id="hn">Seu nível</h2><div id="nivel" class="lvl-card"></div>
+<label class="ctl-title">Título exibido<select id="titulo"></select></label>
+<p class="mut">XP por anime (uma vez cada): adicionar +5 · começar +10 · concluir +50 · avaliar +10 · favoritar +5. Teto de 500 XP por dia.</p></section>
+<section aria-labelledby="hc"><h2 id="hc">Coleção</h2><p class="mut" id="resumo"></p><div id="conq"></div></section>
+<section aria-labelledby="hh"><h2 id="hh">Histórico de XP</h2><ul class="hist" id="hist"></ul></section>
+</main></div><div id="toasts" aria-live="polite"></div><script type="module" src="js/pages/conquistas.js"></script></body></html>
