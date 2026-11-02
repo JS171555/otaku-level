@@ -681,7 +681,11 @@ body.app .ach > i { flex: none; width: 40px; height: 40px; display: grid; place-
 body.app .ach b { display: block; }
 body.app .ach p { margin: 2px 0 4px; color: var(--app-muted); font-size: .9rem; }
 body.app .ach small { color: var(--app-muted); }
-body.app .ach.locked { opacity: .62; }
+body.app .ach.locked {
+  --rc: #85858f;
+  opacity: .58;
+  filter: grayscale(1);
+}
 body.app .r-comum { --rc: #aaa8d8; }
 body.app .r-rara { --rc: #5ec8ff; }
 body.app .r-epica { --rc: #c98bff; }
