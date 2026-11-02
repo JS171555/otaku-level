@@ -111,3 +111,42 @@ body { min-height: 100vh; min-height: 100dvh; }
   :where(button, [role="button"]):not(:disabled):active { transform: none; }
   @view-transition { navigation: none; }
 }
+
+
+/* Acesso OAuth integrado ao mesmo sistema visual das telas de autenticação. */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0 10px;
+  color: var(--mut);
+  font-size: .82rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+  content: "";
+}
+.google-btn {
+  display: flex;
+  width: 100%;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  color: var(--txt);
+  background: #17163f;
+  font: 700 1rem "Zen Maru Gothic", system-ui, sans-serif;
+  cursor: pointer;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.google-btn i { color: #4285f4; font-size: 1.05rem; }
+.google-btn:hover:not(:disabled) { border-color: var(--gold); background: #22204f; }
+.google-btn:active:not(:disabled) { transform: scale(.98); }
+.google-btn:disabled { opacity: .7; cursor: wait; }
+.google-btn[aria-busy="true"] { color: var(--mut); }

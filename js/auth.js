@@ -12,6 +12,12 @@ const MSG = {
 function fail(error) {
   if (!error) return;
   if (MSG[error.message]) throw new Error(MSG[error.message]);
+  if (/provider.*not enabled|unsupported provider/i.test(error.message || '')) {
+    throw new Error('O acesso com Google ainda não está habilitado no Supabase.');
+  }
+  if (/redirect_uri_mismatch|redirect.*uri|redirect.*url/i.test(error.message || '')) {
+    throw new Error('A URL de retorno do Google não está autorizada. Confira as URLs de redirecionamento no Supabase e no Google Cloud.');
+  }
   if (error.status === 429) throw new Error('Muitas tentativas. Aguarde um minuto e tente de novo.');
   throw new Error('Não foi possível concluir. Tente novamente.');
 }
@@ -37,6 +43,36 @@ export async function signIn({ email, password }) {
   need();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   fail(error);
+}
+
+export async function signInWithGoogle() {
+  need();
+  const redirectTo = new URL('index.html', location.href).href;
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo, queryParams: { prompt: 'select_account' } },
+  });
+  fail(error);
+}
+
+export function consumeOAuthError() {
+  const current = new URL(location.href);
+  const query = current.searchParams;
+  const hashParams = new URLSearchParams(current.hash.slice(1));
+  const code = query.get('error') || hashParams.get('error');
+  if (!code) return '';
+
+  const description = (query.get('error_description') || hashParams.get('error_description') || '').toLowerCase();
+  const message = code === 'access_denied'
+    ? 'A entrada com Google foi cancelada. Você pode tentar novamente.'
+    : /redirect_uri_mismatch|redirect.*uri/.test(description)
+      ? 'A URL de retorno do Google não está autorizada. Confira as configurações no Supabase e no Google Cloud.'
+      : 'Não foi possível entrar com Google. Tente novamente.';
+
+  for (const key of ['error', 'error_code', 'error_description', 'error_uri']) current.searchParams.delete(key);
+  if (hashParams.has('error')) current.hash = '';
+  history.replaceState(history.state, '', current.pathname + current.search + current.hash);
+  return message;
 }
 
 export async function sendReset(email) {

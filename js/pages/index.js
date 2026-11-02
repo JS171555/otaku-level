@@ -1,4 +1,4 @@
-import { signIn, signUp, sendReset, redirectIfAuth, validateEmail, validatePassword, validateUsername } from '../auth.js';
+import { signIn, signInWithGoogle, consumeOAuthError, signUp, sendReset, redirectIfAuth, validateEmail, validatePassword, validateUsername } from '../auth.js';
 import { toast, bind, check, introXP } from '../ui.js';
 
 const views = ['login', 'cadastro', 'recuperar'];
@@ -13,7 +13,33 @@ function show() {
 addEventListener('hashchange', show);
 show();
 introXP();
-redirectIfAuth().catch(() => {});
+const oauthError = consumeOAuthError();
+if (oauthError) toast(oauthError, 'err');
+redirectIfAuth().catch((error) => toast(error.message, 'err'));
+
+const googleButtons = [...document.querySelectorAll('[data-google-auth]')];
+googleButtons.forEach((button) => {
+  button.addEventListener('click', async () => {
+    if (googleButtons.some((item) => item.disabled)) return;
+    googleButtons.forEach((item) => {
+      item.dataset.originalLabel = item.innerHTML;
+      item.disabled = true;
+      item.setAttribute('aria-busy', 'true');
+      item.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Conectando ao Google…';
+    });
+    try {
+      await signInWithGoogle();
+    } catch (error) {
+      toast(error.message, 'err');
+    } finally {
+      googleButtons.forEach((item) => {
+        item.disabled = false;
+        item.removeAttribute('aria-busy');
+        item.innerHTML = item.dataset.originalLabel;
+      });
+    }
+  });
+});
 
 bind($('f-login'), async (v) => {
   if (!check($('f-login'), { email: validateEmail(v.email), password: v.password ? '' : 'Informe sua senha.' })) return;
