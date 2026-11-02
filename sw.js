@@ -1,4 +1,4 @@
-const CACHE_NAME = 'otaku-level-shell-v5';
+const CACHE_NAME = 'otaku-level-shell-v6';
 const APP_SHELL = [
   'index.html',
   'reset.html',
@@ -46,6 +46,7 @@ const APP_SHELL = [
   'assets/pwa-icon-192.png',
   'assets/pwa-icon-512.png',
   'assets/pwa-icon-maskable-512.png',
+  'assets/pwa-icon-maskable-512-v2.png',
 ];
 const root = new URL('./', self.registration.scope);
 const isSuccessfulSameOrigin = (response, requestUrl) =>
