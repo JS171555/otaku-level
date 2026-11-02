@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getAnime, searchAnime, slim } from '../../public/otaku/js/kitsu.js';
+import { getAnime, searchAnime, slim } from '../js/kitsu.js';
 
 const originalFetch = globalThis.fetch;
 const cache = new Map();

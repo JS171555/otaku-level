@@ -34,13 +34,15 @@ O projeto também pode ser instalado como PWA em dispositivos Android e iPhone. 
 
 ## Recursos
 
-- Cadastro, login, recuperação e redefinição de senha.
+- Cadastro e login por e-mail e senha, recuperação e redefinição de senha.
+- Login e criação de conta com Google OAuth, com sessão persistida pelo Supabase.
 - Busca e consulta de animes com informações do catálogo Kitsu.
 - Biblioteca pessoal com estados de acompanhamento, avaliação e favoritos.
 - Progresso de XP, níveis, títulos, conquistas e desafios semanais.
 - Perfil com avatar, banner e opções de privacidade.
 - Ranking por período e notificações persistentes.
-- Layout adaptável para desktop e dispositivos móveis.
+- Layout adaptável para desktop e dispositivos móveis, com navegação inferior, áreas seguras e feedback de toque.
+- Transições suaves entre páginas compatíveis com navegadores modernos e suporte a `prefers-reduced-motion`.
 - Instalação PWA com ícones próprios para Android e iOS.
 
 ## Tecnologias
@@ -48,7 +50,7 @@ O projeto também pode ser instalado como PWA em dispositivos Android e iPhone. 
 | Área | Tecnologia |
 | --- | --- |
 | Interface | HTML, CSS e JavaScript ES modules |
-| Autenticação e dados | Supabase Auth, PostgreSQL, Storage e funções RPC |
+| Autenticação e dados | Supabase Auth (e-mail/senha e Google OAuth), PostgreSQL, Storage e funções RPC |
 | Catálogo de animes | Kitsu API |
 | Instalação e cache da interface | Web App Manifest e Service Worker |
 | Testes | Node.js Test Runner, Python e PostgreSQL descartável |
@@ -86,6 +88,18 @@ Abra [http://localhost:5500](http://localhost:5500). Sirva o projeto por HTTP ou
 
 Os scripts das fases indicam suas dependências nos comentários iniciais. A migração `migrate-kitsu.sql` destina-se a projetos que já possuem a Fase 2 e precisam adaptar a biblioteca existente à integração com Kitsu.
 
+### Login com Google (OAuth)
+
+O botão **Entrar com o Google** aparece nas telas de login e cadastro. O cliente inicia `signInWithOAuth` com o provedor `google`, retorna a `index.html` e deixa o Supabase detectar e persistir a sessão. Com a sessão confirmada, o app encaminha a pessoa para `dashboard.html`. Cancelamentos e erros de retorno são mostrados na interface. Para uma conta Google nova, o trigger `on_auth_user_created` cria o perfil e gera um nome de usuário no formato `otaku_<8 caracteres>`; ele pode ser alterado depois no perfil.
+
+Configure o provedor uma vez para cada ambiente:
+
+1. No Google Cloud, crie um cliente OAuth do tipo **Aplicativo da Web** e adicione como URI de redirecionamento autorizado a URL de callback exibida nas configurações do provedor Google no Supabase. O formato é `<SUPABASE_URL>/auth/v1/callback` (neste repositório, `https://yoagurccrdxhlnsynkoj.supabase.co/auth/v1/callback`).
+2. No Supabase, abra **Authentication → Sign In / Providers → Google**, habilite o provedor e informe o Client ID e o Client Secret do Google. Guarde o secret somente no Supabase; não o coloque em `js/config.js` nem no repositório.
+3. Em **Authentication → URL Configuration**, configure o Site URL do ambiente publicado e permita a URL exata de retorno usada pelo app, por exemplo `http://localhost:5500/index.html` no desenvolvimento e `https://seu-dominio/index.html` em produção. A URL usada precisa corresponder ao endereço real em que o app está publicado.
+
+O botão é compartilhado entre login e cadastro: o Google escolhe a conta e o Supabase autentica ou cria a identidade. O formulário tradicional por e-mail continua disponível. O logo Google usado nesses botões fica em `assets/google-logo.png`; o service worker o inclui no cache offline da interface.
+
 A chave `anon`/`publishable` é destinada ao uso no cliente e não substitui as políticas de segurança do banco. Nunca coloque uma chave `service_role`, secret key ou outra credencial privilegiada no código frontend.
 
 ## Instalar no celular
@@ -115,11 +129,15 @@ python3 tests/fase5.test.py
 
 O projeto também contém testes do adaptador Kitsu em `tests/kitsu.test.mjs`, executados com o Node.js Test Runner.
 
+```bash
+node --test tests/kitsu.test.mjs
+```
+
 ## Estrutura do projeto
 
 ```text
 .
-├── assets/                 # Logo e ícones do site e da PWA
+├── assets/                 # Logos, ícones do site/PWA e marca Google do botão OAuth
 ├── css/                    # Estilos das páginas públicas e da aplicação
 ├── js/                     # Autenticação, integração, navegação e lógica do app
 │   └── pages/              # Inicialização das páginas
@@ -127,13 +145,13 @@ O projeto também contém testes do adaptador Kitsu em `tests/kitsu.test.mjs`, e
 ├── tests/                  # Testes da integração e das fases do banco
 ├── *.html                  # Páginas da aplicação
 ├── manifest.webmanifest    # Nome, ícones e modo de exibição da PWA
-└── sw.js                   # Cache da interface e recursos estáticos
+└── sw.js                   # Cache offline da interface e dos recursos estáticos
 ```
 
 ## Publicação
 
-O repositório é estático. Publique a raiz do projeto em GitHub Pages, Netlify, Cloudflare Pages ou outro provedor de hospedagem estática com suporte a HTTPS. Antes de liberar o site, confira as URLs de autenticação do Supabase e confirme que os arquivos do manifesto, os ícones e `sw.js` estão acessíveis no domínio publicado.
+O repositório é estático. Publique a raiz do projeto em GitHub Pages, Netlify, Cloudflare Pages ou outro provedor de hospedagem estática com suporte a HTTPS. Antes de liberar o site, confira as URLs de autenticação do Supabase — incluindo o retorno OAuth para `index.html` — e confirme que os arquivos do manifesto, os ícones, `assets/google-logo.png` e `sw.js` estão acessíveis no domínio publicado. O service worker usa uma versão de cache atualizada para instalar também o logo Google.
 
 ## Marca
 
-A logo com fundo, usada no ícone instalado, está em `assets/pwa-icon-512.png`. A versão transparente para as telas de autenticação está em `assets/otaku-level-logo-transparent.png`.
+A logo com fundo, usada no ícone instalado, está em `assets/pwa-icon-512.png`. A versão transparente para as telas de autenticação está em `assets/otaku-level-logo-transparent.png`. O símbolo Google dos botões OAuth, otimizado para carregamento rápido, está em `assets/google-logo.png`.
