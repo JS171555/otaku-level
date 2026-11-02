@@ -5,6 +5,7 @@ import { animeCard, STATUS } from '../cards.js';
 import { h, toast } from '../ui.js';
 import { progress, paintLevel } from '../gamification.js';
 import { paintChallenges } from '../challenges.js';
+import { avatarEl } from '../profile.js';
 
 const $ = (id) => document.getElementById(id);
 const s = await requireAuth();
@@ -16,6 +17,9 @@ if (s) {
     .catch((e) => $('desafios').replaceChildren(h('p', { class: 'mut' }, e.message)));
   try {
     const [p, list] = await Promise.all([getProfile(s.user.id), listEntries()]);
+    const avatar = avatarEl(p, 'avatar home-avatar');
+    avatar.id = 'home-avatar';
+    $('home-avatar').replaceWith(avatar);
     $('ola').textContent = 'Olá, ' + (p.display_name || p.username);
     const rated = list.filter((e) => e.rating);
     const avg = rated.length ? (rated.reduce((a, e) => a + e.rating, 0) / rated.length).toFixed(1).replace('.', ',') : '—';
