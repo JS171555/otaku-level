@@ -925,6 +925,22 @@ body.app nav#nav a[aria-current="page"]:hover {
   color: #17163f;
   background: var(--app-gold);
 }
+@media (min-width: 900px) {
+  body.app nav#nav a[aria-current="page"] {
+    width: 100%;
+    height: auto;
+    min-height: 48px;
+    align-self: stretch;
+    justify-self: stretch;
+    flex-direction: row;
+    gap: 13px;
+    padding: 0 13px;
+    border-radius: 13px;
+    color: var(--app-pink);
+    background: linear-gradient(90deg, #ff7aa820, #ff7aa80a);
+    box-shadow: inset 3px 0 0 var(--app-pink);
+  }
+}
 
 body.app .search-fab {
   position: fixed;
