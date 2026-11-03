@@ -936,9 +936,10 @@ body.app nav#nav a[aria-current="page"]:hover {
     gap: 13px;
     padding: 0 13px;
     border-radius: 13px;
-    color: var(--app-pink);
-    background: linear-gradient(90deg, #ff7aa820, #ff7aa80a);
-    box-shadow: inset 3px 0 0 var(--app-pink);
+    border: 0;
+    color: #17163f;
+    background: var(--app-gold);
+    box-shadow: none;
   }
 }
 
