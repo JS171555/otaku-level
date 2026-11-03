@@ -1,6 +1,6 @@
 <p align="center">
   <img src="assets/readme-logo-rounded.png"
-       alt="Logo do OTAKU LEVEL com borda dourada, contorno escuro e cantos arredondados"
+       alt="Logo atual do OTAKU LEVEL: anel branco com estrela amarela e contorno preto"
        width="176"
        style="border-radius: 20px;">
 </p>
