@@ -294,9 +294,38 @@ Não desative as políticas RLS para contornar falhas de acesso. Revise a config
 
 ## Contribuição
 
-Para relatar um problema ou sugerir uma melhoria, [abra uma issue](https://github.com/JS171555/otaku-level/issues) com os passos para reproduzir, o comportamento esperado e o navegador utilizado. Evite incluir credenciais ou dados pessoais.
+Contribuições são bem-vindas! Antes de abrir uma issue, confira se já existe um relato semelhante. Use o [rastreador de issues](https://github.com/JS171555/otaku-level/issues) para comunicar problemas ou propor melhorias.
 
-Para propor alterações, crie uma branch com um objetivo definido e envie um pull request explicando a mudança e como ela foi validada.
+### Relatar um bug
+
+Inclua informações que ajudem a reproduzir o problema:
+
+1. **Contexto:** página ou recurso afetado e navegador/dispositivo utilizado.
+2. **Passos:** sequência mínima para reproduzir o comportamento.
+3. **Resultado esperado:** o que deveria acontecer.
+4. **Resultado observado:** o que aconteceu, incluindo mensagens de erro relevantes.
+5. **Evidências:** capturas de tela ou logs, removendo dados pessoais.
+
+### Sugerir uma melhoria
+
+Descreva o problema que a ideia resolve, o comportamento proposto e, se possível, um exemplo de uso. Para mudanças visuais, uma captura ou rascunho ajuda a contextualizar.
+
+### Enviar um pull request
+
+1. Crie uma branch a partir de `main`, usando um nome curto e descritivo, como `docs/ajusta-instalacao` ou `fix/erro-na-biblioteca`.
+2. Faça uma alteração focada e mantenha o padrão de código existente.
+3. Execute os testes relacionados à mudança. Para o adaptador Kitsu, use `node --test tests/kitsu.test.mjs`; para as regras SQL, consulte os comandos da seção [Testes](#testes).
+4. Atualize a documentação quando o comportamento ou a configuração mudar.
+5. Abra o pull request com um resumo do problema, da solução e das verificações realizadas.
+
+**Checklist antes de enviar:**
+
+- [ ] A alteração tem um objetivo claro e escopo limitado.
+- [ ] Os testes relevantes foram executados (ou a limitação foi explicada).
+- [ ] A documentação foi atualizada, quando necessário.
+- [ ] Nenhuma chave secreta, senha, token ou dado pessoal foi incluído.
+
+Evite commits que misturem correções independentes. Não desative políticas RLS nem inclua credenciais reais para facilitar a reprodução de um problema.
 
 ## Licença
 
